@@ -18,6 +18,10 @@
             background-size: cover;
             background-position: center;
         }
+        /* Added text-shadow for better readability on hero section */
+        .hero-text-shadow {
+             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
         .smooth-scroll {
             scroll-behavior: smooth;
         }
@@ -50,11 +54,9 @@
 </head>
 <body class="bg-gray-50 text-gray-800 smooth-scroll">
 
-    <!-- Header & Navigation -->
     <header class="bg-white/80 backdrop-blur-md shadow-md fixed w-full top-0 z-50">
         <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
             <a href="#" class="flex items-center">
-                <!-- Image Logo -->
                 <img src="https://storage.googleapis.com/gemini-prod/images/4155b5d1-5807-47b2-bd73-780d6a2f3922" alt="Green Bapu Logo" class="h-12 md:h-14">
             </a>
             <div class="hidden md:flex space-x-6 items-center">
@@ -69,7 +71,6 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden">
             <a href="#about" class="block py-2 px-4 text-sm text-gray-700 hover:bg-green-100">About Us</a>
             <a href="#inspiration" class="block py-2 px-4 text-sm text-gray-700 hover:bg-green-100">Inspiration</a>
@@ -80,17 +81,15 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-bg text-white pt-32 pb-20">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Reviving Nature, Restoring Hope.</h1>
-            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Green Bapu is a non-profit organization dedicated to creating a sustainable and healthy environment for future generations in India.</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight hero-text-shadow">Reviving Nature, Restoring Hope.</h1>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto hero-text-shadow">Green Bapu is a non-profit organization dedicated to creating a sustainable and healthy environment for future generations in India.</p>
             <a href="#get-involved" class="bg-brand-light text-brand-dark font-bold py-3 px-8 rounded-full hover:bg-brand-light-darker transition duration-300 text-lg">Join Our Mission</a>
         </div>
     </section>
 
     <main>
-        <!-- About Us Section -->
         <section id="about" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="md:flex md:items-center md:space-x-12">
@@ -106,7 +105,6 @@
             </div>
         </section>
         
-        <!-- Inspiration Section -->
         <section id="inspiration" class="py-20 bg-brand-dark text-white">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold mb-12 text-center">Our Guiding Light</h2>
@@ -131,13 +129,11 @@
         </section>
 
 
-        <!-- Our Work Section -->
         <section id="work" class="py-20">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center text-brand-dark mb-2">Our Core Initiatives</h2>
                 <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">We focus on critical areas where we can make the most significant impact on India's environment.</p>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Initiative Card 1: Tree Plantation -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
                         <img src="https://placehold.co/600x400/80bb3b/FFFFFF?text=Plantation+Drive" alt="Tree Plantation Drive by Green Bapu" class="w-full h-48 object-cover">
                         <div class="p-6">
@@ -145,7 +141,6 @@
                             <p class="text-gray-600">We organize mass tree plantation drives in urban and rural areas to combat deforestation, improve air quality, and restore biodiversity. Every sapling planted is a step towards a greener tomorrow.</p>
                         </div>
                     </div>
-                    <!-- Initiative Card 2: River & Lake Cleanup -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
                         <img src="https://placehold.co/600x400/bddc40/000000?text=River+Cleanup" alt="Volunteers cleaning a river" class="w-full h-48 object-cover">
                         <div class="p-6">
@@ -153,7 +148,6 @@
                             <p class="text-gray-600">Our volunteers work tirelessly to clean polluted rivers and lakes, removing plastic and other waste. We aim to restore our precious water bodies to their natural, pristine state.</p>
                         </div>
                     </div>
-                    <!-- Initiative Card 3: Plastic Waste Recycling -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
                         <img src="https://placehold.co/600x400/3b8454/FFFFFF?text=Community+Recycling" alt="Community recycling program in action" class="w-full h-48 object-cover">
                         <div class="p-6">
@@ -165,7 +159,6 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
         <section id="gallery" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center text-brand-dark mb-12">Moments of Impact</h2>
@@ -206,7 +199,6 @@
             </div>
         </section>
 
-        <!-- Get Involved Section -->
         <section id="get-involved" class="py-20 bg-brand-dark text-white">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-4">You Can Make a Difference</h2>
@@ -219,7 +211,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-10">
             <div class="md:flex md:justify-between items-center">
@@ -261,7 +252,6 @@
         </div>
     </footer>
     
-    <!-- Donation Modal -->
     <div id="donation-modal" class="modal-wrapper fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-300" style="background-color: rgba(0,0,0,0.6);">
         <div class="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full mx-4 transform -translate-y-10 transition-transform duration-300">
             <div class="flex justify-between items-center mb-6">
@@ -272,13 +262,13 @@
             <div>
                 <h4 class="font-semibold mb-2">Bank Transfer Details:</h4>
                 <div class="bg-gray-100 p-4 rounded-lg text-sm">
-                    <p><strong>Account Name:</strong> Green Bapu Foundation</p>
-                    <p><strong>Account Number:</strong> 123456789012</p>
+                    <p><strong>Account Name:</strong> Arpit Raj</p>
+                    <p><strong>Account Number:</strong> 2147624903</p>
                     <p><strong>Bank:</strong> State Bank of India</p>
-                    <p><strong>IFSC Code:</strong> SBIN0001234</p>
-                    <p><strong>Branch:</strong> Main Branch, New Delhi</p>
+                    <p><strong>IFSC Code:</strong> KKBK0004261</p>
+                    <p><strong>Branch:</strong> Sector 10A, Gurgaon Haryana</p>
                 </div>
-                <p class="text-xs text-gray-500 mt-2">For UPI, please use: <strong class="text-brand-mid">greenbapu@sbi</strong></p>
+                <p class="text-xs text-gray-500 mt-2">For UPI, please use: <strong class="text-brand-mid">greenbapu@ybl</strong></p>
             </div>
              <p class="text-sm text-gray-500 mt-6">After donating, please email us the transaction details for a receipt. Thank you for your support!</p>
         </div>
