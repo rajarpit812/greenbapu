@@ -26,22 +26,26 @@
             scroll-behavior: smooth;
         }
         /* Style for the modal */
-        .modal {
-            transition: opacity 0.25s ease;
+        .modal-wrapper {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
         }
         .modal-active {
-            overflow-x: hidden;
-            overflow-y: auto;
+            overflow: hidden;
         }
         /* Custom colors for Tailwind */
         .bg-brand-dark { background-color: var(--color-dark-green); }
         .bg-brand-light { background-color: var(--color-light-green); }
+        .bg-brand-mid { background-color: var(--color-mid-green); }
         .text-brand-dark { color: var(--color-dark-green); }
         .text-brand-mid { color: var(--color-mid-green); }
         .hover\:bg-brand-light-darker:hover { background-color: #acc639; } /* Darker version of #bddc40 */
         .hover\:text-brand-mid:hover { color: var(--color-mid-green); }
         .border-brand-light { border-color: var(--color-light-green); }
         .hover\:bg-brand-mid:hover { background-color: var(--color-mid-green); }
+        .hover\:bg-brand-dark:hover { background-color: #316d45; }
         
         .gandhi-img-container {
             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(59,132,84,0.8) 70%);
@@ -205,7 +209,7 @@
                 <p class="text-lg mb-8 max-w-2xl mx-auto">Whether you donate, volunteer, or simply spread the word, your contribution is vital to our mission. Join us in creating a healthier planet.</p>
                 <div class="md:flex md:justify-center md:space-x-6 space-y-4 md:space-y-0">
                     <button id="donate-button" class="w-full md:w-auto bg-brand-light text-brand-dark font-bold py-3 px-8 rounded-full hover:bg-brand-light-darker transition duration-300 text-lg">Donate Now</button>
-                    <a href="mailto:volunteer@greenbapu.org" class="inline-block w-full md:w-auto bg-transparent border-2 border-brand-light text-brand-light font-bold py-3 px-8 rounded-full hover:bg-brand-light hover:text-brand-dark transition duration-300 text-lg">Become a Volunteer</a>
+                    <a href="mailto:greenbapu.org@gmail.com" class="inline-block w-full md:w-auto bg-transparent border-2 border-brand-light text-brand-light font-bold py-3 px-8 rounded-full hover:bg-brand-light hover:text-brand-dark transition duration-300 text-lg">Become a Volunteer</a>
                 </div>
             </div>
         </section>
@@ -233,7 +237,7 @@
                         <h4 class="font-semibold mb-3">Contact Us</h4>
                         <ul>
                             <li class="text-gray-400">New Delhi, India</li>
-                            <li class="text-gray-400 hover:text-white"><a href="mailto:info@greenbapu.org">info@greenbapu.org</a></li>
+                            <li class="text-gray-400 hover:text-white"><a href="mailto:greenbapu.org@gmail.com">greenbapu.org@gmail.com</a></li>
                         </ul>
                     </div>
                     <div>
@@ -252,25 +256,37 @@
         </div>
     </footer>
     
-    <div id="donation-modal" class="modal-wrapper fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-300" style="background-color: rgba(0,0,0,0.6);">
-        <div class="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full mx-4 transform -translate-y-10 transition-transform duration-300">
+    <div id="donation-modal" class="modal-wrapper fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none opacity-0" style="background-color: rgba(0,0,0,0.6); z-index: 100;">
+        <div class="modal-content bg-white rounded-lg shadow-2xl p-8 max-w-md w-full mx-4 transform -translate-y-10">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-2xl font-bold text-brand-dark">Support Our Cause</h3>
                 <button id="close-modal" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
             </div>
             <p class="text-gray-600 mb-6">Your generous donation will directly fund our tree plantation drives and cleanup activities. Every contribution, big or small, helps restore our planet.</p>
             <div>
-                <h4 class="font-semibold mb-2">Bank Transfer Details:</h4>
-                <div class="bg-gray-100 p-4 rounded-lg text-sm">
+                <h4 class="font-semibold mb-2 text-gray-800">Bank Transfer Details:</h4>
+                <div class="bg-gray-100 p-4 rounded-lg text-sm space-y-1">
                     <p><strong>Account Name:</strong> Arpit Raj</p>
                     <p><strong>Account Number:</strong> 2147624903</p>
-                    <p><strong>Bank:</strong> State Bank of India</p>
+                    <p><strong>Bank:</strong> Kotak Mahindra Bank</p>
                     <p><strong>IFSC Code:</strong> KKBK0004261</p>
                     <p><strong>Branch:</strong> Sector 10A, Gurgaon Haryana</p>
                 </div>
-                <p class="text-xs text-gray-500 mt-2">For UPI, please use: <strong class="text-brand-mid">greenbapu@ybl</strong></p>
+                <div class="flex items-center justify-between mt-4">
+                     <p class="text-sm text-gray-500">For UPI: <strong class="text-brand-mid">greenbapu@ybl</strong></p>
+                     <button id="qr-button" class="bg-brand-mid text-white font-bold py-1 px-3 rounded-lg hover:bg-brand-dark transition duration-300 text-sm">Show QR</button>
+                </div>
             </div>
              <p class="text-sm text-gray-500 mt-6">After donating, please email us the transaction details for a receipt. Thank you for your support!</p>
+        </div>
+    </div>
+
+    <div id="qr-modal" class="modal-wrapper fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none opacity-0" style="background-color: rgba(0,0,0,0.6); z-index: 110;">
+        <div class="modal-content bg-white rounded-lg shadow-2xl p-6 max-w-xs w-full mx-4 relative transform -translate-y-10 text-center">
+            <button id="close-qr-modal" class="absolute top-2 right-3 text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
+            <h4 class="text-xl font-bold text-brand-dark mb-4">Scan to Pay</h4>
+            <img src="https://res.cloudinary.com/dcrlp6ryj/image/upload/v1751462395/q8vhzha2mbvhsjzk3pyb.jpg" alt="UPI QR Code for Green Bapu" class="mx-auto w-full max-w-[250px] h-auto rounded-md">
+            <p class="text-sm text-gray-600 mt-4">Use any UPI app to scan the code.</p>
         </div>
     </div>
 
@@ -291,9 +307,12 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if(targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
                 // Close mobile menu on link click
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
@@ -301,28 +320,48 @@
             });
         });
 
-        // JavaScript for Donation Modal
+        // JavaScript for Modals
         const donateButton = document.getElementById('donate-button');
-        const modalWrapper = document.getElementById('donation-modal');
+        const donationModalWrapper = document.getElementById('donation-modal');
+        const donationModalContent = donationModalWrapper.querySelector('.modal-content');
         const closeModalButton = document.getElementById('close-modal');
 
-        const openModal = () => {
-            modalWrapper.classList.remove('opacity-0', 'pointer-events-none');
-            modalWrapper.querySelector('div').classList.remove('-translate-y-10');
+        const qrButton = document.getElementById('qr-button');
+        const qrModalWrapper = document.getElementById('qr-modal');
+        const qrModalContent = qrModalWrapper.querySelector('.modal-content');
+        const closeQrModalButton = document.getElementById('close-qr-modal');
+
+        const openModal = (wrapper, content) => {
+            wrapper.classList.remove('opacity-0', 'pointer-events-none');
+            content.classList.remove('-translate-y-10');
             document.body.classList.add('modal-active');
         };
 
-        const closeModal = () => {
-            modalWrapper.classList.add('opacity-0', 'pointer-events-none');
-            modalWrapper.querySelector('div').classList.add('-translate-y-10');
-            document.body.classList.remove('modal-active');
+        const closeModal = (wrapper, content) => {
+            wrapper.classList.add('opacity-0');
+            wrapper.classList.add('pointer-events-none');
+            content.classList.add('-translate-y-10');
+            // Only remove modal-active if no other modals are open
+            if (!donationModalWrapper.classList.contains('pointer-events-none') || !qrModalWrapper.classList.contains('pointer-events-none')) {
+                document.body.classList.remove('modal-active');
+            }
         };
+        
+        // Donation Modal Listeners
+        donateButton.addEventListener('click', () => openModal(donationModalWrapper, donationModalContent));
+        closeModalButton.addEventListener('click', () => closeModal(donationModalWrapper, donationModalContent));
+        donationModalWrapper.addEventListener('click', (event) => {
+            if (event.target === donationModalWrapper) {
+                closeModal(donationModalWrapper, donationModalContent);
+            }
+        });
 
-        donateButton.addEventListener('click', openModal);
-        closeModalButton.addEventListener('click', closeModal);
-        modalWrapper.addEventListener('click', (event) => {
-            if (event.target === modalWrapper) {
-                closeModal();
+        // QR Modal Listeners
+        qrButton.addEventListener('click', () => openModal(qrModalWrapper, qrModalContent));
+        closeQrModalButton.addEventListener('click', () => closeModal(qrModalWrapper, qrModalContent));
+        qrModalWrapper.addEventListener('click', (event) => {
+            if (event.target === qrModalWrapper) {
+                closeModal(qrModalWrapper, qrModalContent);
             }
         });
         
